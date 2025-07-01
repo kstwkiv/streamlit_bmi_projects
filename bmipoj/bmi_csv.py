@@ -7,7 +7,7 @@ st.title("BMI calculation with history")
 if 'bmi_history' not in st.session_state:
     st.session_state.bmi_history=[]
 
-height_cm=st.number_input("Enetr your height in cm: ")
+height_cm=st.number_input("Enter your height in cm: ")
 weight_kg=st.number_input("Enter your weight in kgs: ")
 
 
@@ -24,11 +24,11 @@ if st.button("Check BMI"):
         })
         if bmi<18.5:
             category="Underweight"
-            color="Orange"
+            color="orange"
             st.warning("You are underweight.")
         elif 18.5<=bmi<24.9:
             category="Normal"
-            color="Green"
+            color="green"
             st.success("You are in the normal range.")
         elif 25<=bmi<29.9:
             category="Overweight"
@@ -63,7 +63,7 @@ if st.session_state.bmi_history:
     csv_buffer=io.StringIO()
     df.to_csv(csv_buffer,index=False)
     st.download_button(
-        label="Downlaod BMI history as CSV",
+        label="Download BMI history as CSV",
         data=csv_buffer.getvalue(),
         file_name="bmi_history.csv",
         mime="text/csv"
